@@ -1,0 +1,37 @@
+# Default to your Ubuntu focal base image, can be overridden at build time
+ARG BASE_IMAGE=ghcr.io/remasteredgod/ubuntu-focal:20.04
+FROM ${BASE_IMAGE}
+
+# Set non-interactive mode and timezone
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
+# Fix package sources and install required packages
+RUN sed -i 's|http://archive.ubuntu.com/ubuntu|http://mirrors.kernel.org/ubuntu|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.ubuntu.com/ubuntu|http://mirrors.kernel.org/ubuntu|g' /etc/apt/sources.list && \
+    apt-get clean && \
+    apt-get update --fix-missing && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    sudo lsb-release gnupg2 curl wget git build-essential \
+    locales software-properties-common ca-certificates tzdata && \
+    rm -rf /var/lib/apt/lists/*
+
+# Configure locales
+RUN locale-gen en_US en_US.UTF-8 && \
+    update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && \
+    export LANG=en_US.UTF-8
+
+# Add ROS repo + keys
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
+    curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+
+# Install ROS Noetic Base with better error handling
+RUN DEBIAN_FRONTEND=noninteractive apt-get update --fix-missing && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    ros-noetic-ros-base && \
+    rm -rf /var/lib/apt/lists/*
+
+# Auto source ROS
+RUN echo "source /opt/ros/noetic/setup.bash" >> /root/.bashrc
+
+CMD ["/bin/bash"]
