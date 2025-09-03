@@ -5,11 +5,13 @@ This repository provides Docker images for Ubuntu 20.04 (Focal Fossa) and ROS No
 ## Available Images
 
 ### 1. Ubuntu Focal Base Image
+
 - **Image**: `ghcr.io/remasteredgod/ubuntu-focal:20.04`
 - **Description**: Clean Ubuntu 20.04 base image built from scratch
 - **Size**: Minimal (~70MB compressed)
 
-### 2. ROS Noetic Image  
+### 2. ROS Noetic Image
+
 - **Image**: `ghcr.io/remasteredgod/ros-noetic:20.04`
 - **Description**: Ubuntu 20.04 + ROS Noetic Base installation
 - **Size**: ~1.2GB compressed
@@ -18,6 +20,7 @@ This repository provides Docker images for Ubuntu 20.04 (Focal Fossa) and ROS No
 ## Quick Start
 
 ### Option 1: Ubuntu Base Only
+
 ```bash
 # Pull the image
 docker pull ghcr.io/remasteredgod/ubuntu-focal:20.04
@@ -27,6 +30,7 @@ docker run -it --rm ghcr.io/remasteredgod/ubuntu-focal:20.04
 ```
 
 ### Option 2: ROS Noetic Environment
+
 ```bash
 # Pull the image
 docker pull ghcr.io/remasteredgod/ros-noetic:20.04
@@ -41,16 +45,19 @@ roscore  # Start ROS master
 ## Building from Source
 
 ### Prerequisites
+
 - Docker Desktop with buildx enabled
 - GitHub Container Registry access (for pushing)
 
 ### Build Ubuntu Base
+
 ```bash
 # Build the base Ubuntu image
 docker build -t ghcr.io/remasteredgod/ubuntu-focal:20.04 .
 ```
 
 ### Build ROS Noetic
+
 ```bash
 # Build ROS image (multi-platform)
 docker buildx build \
@@ -64,12 +71,14 @@ docker buildx build \
 ## Image Details
 
 ### Ubuntu Base Features
+
 - Built from scratch using Ubuntu Cloud Image
 - Non-interactive installation support
 - UTF-8 locale configured
 - Essential build tools included
 
 ### ROS Noetic Features
+
 - ROS Noetic Base installation
 - Auto-sourced ROS environment
 - Development tools (git, build-essential, etc.)
@@ -79,6 +88,7 @@ docker buildx build \
 ## Usage Examples
 
 ### Development Environment
+
 ```bash
 # Mount your workspace
 docker run -it --rm \
@@ -88,6 +98,7 @@ docker run -it --rm \
 ```
 
 ### CI/CD Pipeline
+
 ```yaml
 # GitHub Actions example
 jobs:
@@ -103,6 +114,7 @@ jobs:
 ```
 
 ### Docker Compose
+
 ```yaml
 version: '3.8'
 services:
@@ -110,8 +122,8 @@ services:
     image: ghcr.io/remasteredgod/ros-noetic:20.04
     command: roscore
     ports:
-      - "11311:11311"
-  
+      - '11311:11311'
+
   ros-node:
     image: ghcr.io/remasteredgod/ros-noetic:20.04
     depends_on:
@@ -124,20 +136,22 @@ services:
 
 ## Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
+| Variable          | Default          | Description                  |
+| ----------------- | ---------------- | ---------------------------- |
 | `DEBIAN_FRONTEND` | `noninteractive` | Prevents interactive prompts |
-| `TZ` | `UTC` | System timezone |
-| `LANG` | `en_US.UTF-8` | System locale |
+| `TZ`              | `UTC`            | System timezone              |
+| `LANG`            | `en_US.UTF-8`    | System locale                |
 
 ## Troubleshooting
 
 ### Build Issues
+
 - **Mirror problems**: The Dockerfile uses kernel.org mirrors for reliability
 - **Interactive prompts**: All installations are non-interactive
 - **Platform issues**: Use `--platform` flag for specific architectures
 
 ### Runtime Issues
+
 - **ROS not found**: Ensure you're using the ROS image, not the base Ubuntu image
 - **Permission issues**: Use `--user $(id -u):$(id -g)` for file permissions
 - **Network issues**: Check if ports 11311 (ROS Master) are accessible

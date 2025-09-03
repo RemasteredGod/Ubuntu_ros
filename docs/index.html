@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ubuntu Focal 20.04 & ROS Noetic Docker Images - Documentation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <h2><i class="fab fa-docker"></i> Docker Docs</h2>
+      </div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="#overview" class="nav-link"
+            ><i class="fas fa-home"></i> Overview</a
+          >
+        </li>
+        <li>
+          <a href="#images" class="nav-link"
+            ><i class="fas fa-layer-group"></i> Available Images</a
+          >
+        </li>
+        <li>
+          <a href="#quickstart" class="nav-link"
+            ><i class="fas fa-rocket"></i> Quick Start</a
+          >
+        </li>
+        <li>
+          <a href="#building" class="nav-link"
+            ><i class="fas fa-hammer"></i> Building</a
+          >
+        </li>
+        <li>
+          <a href="#configuration" class="nav-link"
+            ><i class="fas fa-sliders-h"></i> Configuration</a
+          >
+        </li>
+        <li>
+          <a href="#troubleshooting" class="nav-link"
+            ><i class="fas fa-exclamation-triangle"></i> Troubleshooting</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <header class="hero">
+        <div class="container">
+          <h1><i class="fab fa-ubuntu"></i> Ubuntu Focal 20.04 & ROS Noetic</h1>
+          <p class="hero-subtitle">
+            Production-ready Docker images for robotics development
+          </p>
+          <div class="hero-buttons">
+            <a href="#quickstart" class="btn btn-primary">Get Started</a>
+            <a
+              href="https://github.com/remasteredgod/ubuntu-focal"
+              class="btn btn-outline"
+            >
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <section id="overview" class="section">
+          <h2>Overview</h2>
+          <div class="grid">
+            <div class="card">
+              <div class="card-icon"><i class="fab fa-ubuntu"></i></div>
+              <h3>Ubuntu 20.04 Base</h3>
+              <p>
+                Minimal, secure Ubuntu Focal Fossa image built from scratch.
+                Perfect for lightweight applications and as a foundation for
+                custom images.
+              </p>
+              <div class="stats">
+                <span class="stat"><i class="fas fa-download"></i> ~70MB</span>
+                <span class="stat"
+                  ><i class="fas fa-shield-alt"></i> Secure</span
+                >
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon"><i class="fas fa-robot"></i></div>
+              <h3>ROS Noetic</h3>
+              <p>
+                Complete robotics development environment with ROS Noetic, build
+                tools, and development utilities pre-configured.
+              </p>
+              <div class="stats">
+                <span class="stat"><i class="fas fa-download"></i> ~1.2GB</span>
+                <span class="stat"
+                  ><i class="fas fa-tools"></i> Full Dev Stack</span
+                >
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon"><i class="fas fa-server"></i></div>
+              <h3>Multi-Platform</h3>
+              <p>
+                Built for both AMD64 and ARM64 architectures, ensuring
+                compatibility across different deployment environments.
+              </p>
+              <div class="stats">
+                <span class="stat"><i class="fas fa-microchip"></i> AMD64</span>
+                <span class="stat"><i class="fas fa-microchip"></i> ARM64</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="images" class="section">
+          <h2>Available Images</h2>
+          <div class="image-grid">
+            <div class="image-card">
+              <div class="image-header">
+                <h3><i class="fab fa-ubuntu"></i> Ubuntu Focal Base</h3>
+                <span class="image-tag"
+                  >ghcr.io/remasteredgod/ubuntu-focal:20.04</span
+                >
+              </div>
+              <div class="image-details">
+                <div class="detail-item">
+                  <strong>Base:</strong> Ubuntu Cloud Image (scratch)
+                </div>
+                <div class="detail-item">
+                  <strong>Size:</strong> ~70MB compressed
+                </div>
+                <div class="detail-item">
+                  <strong>Packages:</strong> Essential build tools, locales
+                </div>
+                <div class="detail-item">
+                  <strong>Use Case:</strong> Minimal deployments, custom images
+                </div>
+              </div>
+              <div class="image-actions">
+                <button
+                  class="btn btn-sm btn-primary copy-btn"
+                  data-copy="docker pull ghcr.io/remasteredgod/ubuntu-focal:20.04"
+                >
+                  <i class="fas fa-copy"></i> Copy Pull Command
+                </button>
+              </div>
+            </div>
+
+            <div class="image-card">
+              <div class="image-header">
+                <h3><i class="fas fa-robot"></i> ROS Noetic</h3>
+                <span class="image-tag"
+                  >ghcr.io/remasteredgod/ros-noetic:20.04</span
+                >
+              </div>
+              <div class="image-details">
+                <div class="detail-item">
+                  <strong>Base:</strong> Ubuntu Focal + ROS Noetic
+                </div>
+                <div class="detail-item">
+                  <strong>Size:</strong> ~1.2GB compressed
+                </div>
+                <div class="detail-item">
+                  <strong>Packages:</strong> ROS Base, dev tools, build
+                  essentials
+                </div>
+                <div class="detail-item">
+                  <strong>Use Case:</strong> Robotics development, ROS
+                  applications
+                </div>
+              </div>
+              <div class="image-actions">
+                <button
+                  class="btn btn-sm btn-primary copy-btn"
+                  data-copy="docker pull ghcr.io/remasteredgod/ros-noetic:20.04"
+                >
+                  <i class="fas fa-copy"></i> Copy Pull Command
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="quickstart" class="section">
+          <h2>Quick Start</h2>
+          <div class="tabs">
+            <div class="tab-buttons">
+              <button class="tab-button active" data-tab="ros">
+                ROS Noetic
+              </button>
+              <button class="tab-button" data-tab="ubuntu">Ubuntu Base</button>
+            </div>
+
+            <div class="tab-content" id="ubuntu-tab">
+              <h3>Ubuntu 20.04 Base Image</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>Pull and Run Ubuntu Base</span>
+                  <button
+                    class="copy-btn"
+                    data-copy="docker pull ghcr.io/remasteredgod/ubuntu-focal:20.04
+docker run -it --network host ghcr.io/remasteredgod/ubuntu-focal:20.04"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+                <pre><code class="language-bash"># Pull the image
+docker pull ghcr.io/remasteredgod/ubuntu-focal:20.04
+
+# Run interactive container with host networking
+docker run -it --network host ghcr.io/remasteredgod/ubuntu-focal:20.04</code></pre>
+              </div>
+
+              <div class="tutorial-section">
+                <div class="alert alert-info">
+                  <i class="fas fa-book"></i>
+                  <strong>Ubuntu Base Documentation:</strong> Learn how to use
+                  and customize the Ubuntu base image effectively.
+                </div>
+                <div class="tutorial-link-container">
+                  <a href="details.html" class="tutorial-link" target="_blank">
+                    <div class="tutorial-content">
+                      <div class="tutorial-icon">
+                        <i class="fab fa-ubuntu"></i>
+                      </div>
+                      <div class="tutorial-text">
+                        <h4>Ubuntu Base Guide & Troubleshooting</h4>
+                        <p>
+                          Comprehensive guide covering common issues, solutions,
+                          and best practices for Ubuntu Docker containers
+                        </p>
+                      </div>
+                      <div class="tutorial-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content active" id="ros-tab">
+              <h3>ROS Noetic Environment</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>Pull and Run ROS Noetic</span>
+                  <button
+                    class="copy-btn"
+                    data-copy="docker pull ghcr.io/remasteredgod/ros-noetic:20.04
+docker run -it --network host ghcr.io/remasteredgod/ros-noetic:20.04
+# Inside container
+roscore"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+                <pre><code class="language-bash"># Pull the image
+docker pull ghcr.io/remasteredgod/ros-noetic:20.04
+
+# Run interactive container with host networking
+docker run -it --network host ghcr.io/remasteredgod/ros-noetic:20.04
+
+# Inside container - ROS is already sourced
+roscore  # Start ROS master</code></pre>
+              </div>
+
+              <div class="tutorial-section">
+                <div class="alert alert-info">
+                  <i class="fas fa-graduation-cap"></i>
+                  <strong>Need Help Getting Started?</strong> Check out our
+                  comprehensive tutorial for step-by-step guidance and
+                  real-world examples.
+                </div>
+                <div class="tutorial-link-container">
+                  <a
+                    href="https://your-tutorial-site.com/ros-docker-guide"
+                    class="tutorial-link"
+                    target="_blank"
+                  >
+                    <div class="tutorial-content">
+                      <div class="tutorial-icon">
+                        <i class="fas fa-book-open"></i>
+                      </div>
+                      <div class="tutorial-text">
+                        <h4>Complete ROS Docker Tutorial</h4>
+                        <p>
+                          Full guide with explanations, examples, and hands-on
+                          tutorials for using ROS with Docker
+                        </p>
+                      </div>
+                      <div class="tutorial-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="building" class="section">
+          <h2>Building from Source</h2>
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <strong>Prerequisites:</strong> Docker Desktop with buildx enabled
+            and GitHub Container Registry access
+          </div>
+
+          <h3>Build Ubuntu Base</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span>Build Base Image</span>
+              <button
+                class="copy-btn"
+                data-copy="docker build -t ghcr.io/remasteredgod/ubuntu-focal:20.04 ."
+              >
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <pre><code class="language-bash">docker build -t ghcr.io/remasteredgod/ubuntu-focal:20.04 .</code></pre>
+          </div>
+
+          <h3>Build ROS Noetic (Multi-Platform)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span>Multi-Platform Build</span>
+              <button
+                class="copy-btn"
+                data-copy="docker buildx build --platform linux/amd64,linux/arm64 --build-arg BASE_IMAGE=ghcr.io/remasteredgod/ubuntu-focal:20.04 -t ghcr.io/remasteredgod/ros-noetic:20.04 -f Dockerfile.ros --push ."
+              >
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <pre><code class="language-bash">docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  --build-arg BASE_IMAGE=ghcr.io/remasteredgod/ubuntu-focal:20.04 \
+  -t ghcr.io/remasteredgod/ros-noetic:20.04 \
+  -f Dockerfile.ros \
+  --push .</code></pre>
+          </div>
+        </section>
+
+        <section id="configuration" class="section">
+          <h2>Configuration</h2>
+
+          <h3>Environment Variables</h3>
+          <div class="table-responsive">
+            <table class="config-table">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>DEBIAN_FRONTEND</code></td>
+                  <td><code>noninteractive</code></td>
+                  <td>
+                    Prevents interactive prompts during package installation
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>TZ</code></td>
+                  <td><code>UTC</code></td>
+                  <td>System timezone configuration</td>
+                </tr>
+                <tr>
+                  <td><code>LANG</code></td>
+                  <td><code>en_US.UTF-8</code></td>
+                  <td>System locale and character encoding</td>
+                </tr>
+                <tr>
+                  <td><code>ROS_DISTRO</code></td>
+                  <td><code>noetic</code></td>
+                  <td>ROS distribution version (ROS image only)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Build Arguments</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span>Custom Base Image</span>
+              <button
+                class="copy-btn"
+                data-copy="docker build --build-arg BASE_IMAGE=custom-ubuntu:20.04 -f Dockerfile.ros ."
+              >
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+            <pre><code class="language-bash"># Use custom base image
+docker build --build-arg BASE_IMAGE=custom-ubuntu:20.04 -f Dockerfile.ros .</code></pre>
+          </div>
+        </section>
+
+        <section id="troubleshooting" class="section">
+          <h2>Troubleshooting</h2>
+
+          <div class="troubleshoot-grid">
+            <div class="trouble-card">
+              <h3><i class="fas fa-hammer"></i> Build Issues</h3>
+              <div class="trouble-item">
+                <h4>Interactive Prompts During Build</h4>
+                <p>
+                  <strong>Problem:</strong> Build hangs waiting for
+                  timezone/locale selection
+                </p>
+                <p>
+                  <strong>Solution:</strong> Ensure
+                  <code>DEBIAN_FRONTEND=noninteractive</code> is set
+                </p>
+                <div class="code-snippet">
+                  <code>ENV DEBIAN_FRONTEND=noninteractive</code>
+                </div>
+              </div>
+              <div class="trouble-item">
+                <h4>Package Repository Errors</h4>
+                <p>
+                  <strong>Problem:</strong> 400 Bad Request from
+                  archive.ubuntu.com
+                </p>
+                <p>
+                  <strong>Solution:</strong> Uses kernel.org mirrors
+                  automatically
+                </p>
+              </div>
+            </div>
+
+            <div class="trouble-card">
+              <h3><i class="fas fa-play"></i> Runtime Issues</h3>
+              <div class="trouble-item">
+                <h4>ROS Commands Not Found</h4>
+                <p>
+                  <strong>Problem:</strong> <code>roscore</code> command not
+                  available
+                </p>
+                <p>
+                  <strong>Solution:</strong> Use ROS image, not base Ubuntu
+                  image
+                </p>
+                <div class="code-snippet">
+                  <code
+                    >docker pull ghcr.io/remasteredgod/ros-noetic:20.04</code
+                  >
+                </div>
+              </div>
+              <div class="trouble-item">
+                <h4>File Permission Issues</h4>
+                <p><strong>Problem:</strong> Cannot write to mounted volumes</p>
+                <p><strong>Solution:</strong> Match user IDs</p>
+                <div class="code-snippet">
+                  <code>docker run --user $(id -u):$(id -g) ...</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4><i class="fab fa-github"></i> Resources</h4>
+            <ul>
+              <li>
+                <a href="https://github.com/remasteredgod/ubuntu-focal"
+                  ><i class="fab fa-github"></i> GitHub Repository</a
+                >
+              </li>
+              <li>
+                <a href="https://hub.docker.com/r/remasteredgod"
+                  ><i class="fab fa-docker"></i> Docker Hub</a
+                >
+              </li>
+              <li>
+                <a href="https://ghcr.io"
+                  ><i class="fas fa-box"></i> GitHub Packages</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4><i class="fas fa-book"></i> Quick Links</h4>
+            <ul>
+              <li>
+                <a href="#quickstart"
+                  ><i class="fas fa-rocket"></i> Quick Start</a
+                >
+              </li>
+              <li>
+                <a href="#building"
+                  ><i class="fas fa-hammer"></i> Building Guide</a
+                >
+              </li>
+              <li>
+                <a href="#troubleshooting"
+                  ><i class="fas fa-life-ring"></i> Help & Support</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4><i class="fas fa-info-circle"></i> About</h4>
+            <p class="footer-description">
+              Production-ready Docker images for Ubuntu 20.04 and ROS Noetic
+              development environments.
+            </p>
+            <div class="footer-badges">
+              <span class="badge"
+                ><i class="fab fa-ubuntu"></i> Ubuntu 20.04</span
+              >
+              <span class="badge"><i class="fas fa-robot"></i> ROS Noetic</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2025 RemasteredGod. Licensed under MIT License.</p>
+            <div class="footer-links">
+              <a
+                href="https://github.com/remasteredgod/ubuntu-focal/issues"
+                title="Report Issues"
+              >
+                <i class="fas fa-bug"></i>
+              </a>
+              <a
+                href="https://github.com/remasteredgod/ubuntu-focal/discussions"
+                title="Discussions"
+              >
+                <i class="fas fa-comments"></i>
+              </a>
+              <a href="mailto:support@example.com" title="Contact">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
